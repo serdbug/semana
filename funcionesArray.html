@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Este programa va realizar un escritura de de los dias de la semana.
+    Los dias se encuentrar guardado dentro un Array. Para recuperar el nombre
+de los dias de la semana se recorre el Array con un ciclo for.
+La cantidad de ciclos lo de termina el tamano del array-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dias de semanas</title>
+
+<style>/*Los esitlos que se aplican dependiendo la clase. Esto se selecciona con un if*/
+    .test1{
+        color: white;
+        background-color: red;
+        border:solid black 10px;
+    }
+
+    .test2{
+        color:black;
+        background-color: white;
+        border:solid black 10px;
+    }
+</style>
+
+
+</head>
+<body>
+    <!--El cuerpo DOM solo genera un boton y un contenedor div
+    que se utilizara para insertar los datos que se obtienen 
+del array-->
+    <button id="btn">Enviar</button>
+    <div id="mostrar">
+
+    </div>
+    <script>//Icinio de javaScript
+        //Aqui comiendo la logica del programa
+        //Y la funcion que se activ a cuando se ejectua el click del boton
+        let mostrar = document.getElementById('mostrar');//Variables que tiene el ID del elemento HTML, el contenedor
+        let btn= document.getElementById('btn');//Variable que guarda el ID del boton
+        
+        btn.addEventListener('click', function(){//Funcion que se ejecuta cuando se hace click
+            
+            
+            //Se inicializa el Array llamado dias. Y se crea el Array
+            var dias = new Array(
+                'lunes', 'martes','miercoles',
+                'jueves', 'viernes', 'sabado',
+                'domingo'
+            );
+            
+            /*Este el ciclo for que crea los elemento h1 dentro del contenedor div
+            cada h1 que se va generando se le agisna un index que representa el 
+            texto que contiene el elemento del Array. Este index se empieza de 0 a 6
+            */
+            for(var i=0;i<dias.length;i++){//si la varieble i es menor que 6 se ejecuta el ciclo for
+                var mensajeNodo = dias[i];//Esta variable se inicia con el primer elemento del array. Este elementco contiene el texto 'lunes'
+                var elementoH1 = document.createElement('h1');//el la variable elementoH1 se guarda el elemnto h1 que se va a crear
+                var mensaje = document.createTextNode(mensajeNodo);//en la variable mensaje se guar el elemnto nodo de texto. en este caso luenes
+            
+                console.log(mensajeNodo);//Muestra por consola para varificar el dato
+                
+                elementoH1.appendChild(mensaje); /*al elemento elementoH1 accedo mediente el punto a la funcion .appenChilld() y le
+                envio como parameto el nodo mensaje. Que dentro de ese nodo esta el parametro que contiene nombre lunes*/
+                mostrar.appendChild(elementoH1);//Al elemnto mostrar se le asigina el elemntro h1 con todos sus nodos integrados
+                
+                /*Anetes de imprimirse en el DOM del HTML se le va asignar una clase de formato de CSS
+                Dentro de la estique style se encontraran dos opciones o dos clases -- test1 y test2
+                
+                El para saber que clase de css se le va asignar se lee la variable que contiene
+                el texto del elemnto del array que se esta leyendo. El array que se esta leyendo dias.
+                Y esta viltrado para que elemento 1 hasta el elemnto 3 tengan la clase CSS tes1. Y del 
+                elemnto 4 al lemento 6 del array dias tengan la clase test2.
+                */
+                    if(mensajeNodo == 'lunes'){
+                      elementoH1.classList.add('test1');
+                    }
+                    if(mensajeNodo == 'martes'){
+                      elementoH1.classList.add('test1');
+                    }
+                    if(mensajeNodo == 'miercoles'){
+                      elementoH1.classList.add('test1');
+                    }
+                    if(mensajeNodo == 'jueves'){
+                      elementoH1.classList.add('test1');
+                    }
+                    if(mensajeNodo == 'viernes'){
+                      elementoH1.classList.add('test2');
+                    }
+                    if(mensajeNodo == 'sabado'){
+                      elementoH1.classList.add('test2');
+                    }
+                    if(mensajeNodo == 'domingo'){
+                      elementoH1.classList.add('test2');
+                    }
+
+                
+            };
+
+            
+        });
+
+    </script>
+</body>
+</html>
